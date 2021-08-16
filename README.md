@@ -27,28 +27,45 @@
 
 ### /bounties:
   - POST
-    - description: create a new bounty with an id and add it to the bounties table
+    - description: Creates a new bounty with an id and add it to the bounties table
     - status code:(200)
     - JSON input:
-      - username:{string}
-      - password:{string}
+      - header:{string}
+      - content:{string}
+      - karma:{integer}
   - GET
-    - description: 
+    - description: Return a list of all bounties
     - status code:(200)
     - no JSON Input
+    - - Example output
+       ```JSON
+      {
+      "id":1,
+      "header":"foo",
+      "content":"bar",
+      "poster":"John Doe",
+      "karma":100,
+      }
 
 ### /bounties/id:
   - PUT
-    - description: update a bounty with in the bounties table on a given id
+    - description: Updates a bounty with in the bounties table on a given id
     - status code:(200)
     - JSON input:
       - header:{string}
       - content:{string}
       - poster:{string}  
-      <!-- - username:{string}
-      - password:{string} -->
+    - Example output
+       ```JSON
+      { 
+      "id": 1,
+      "header":"foo",
+      "content":"bar",
+      "poster":"John Doe"
+      }
+
   - GET
-    - description: return a bounty with related comments
+    - description: Return a bounty with related comments
     - status code:(200)
     - no JSON input
     - Example output
@@ -70,24 +87,27 @@
         }]
       }
   - DELETE
-    - description: delete bounty from table
+    - description: Delete bounty from table
     - status code:(204)
     - no JSON input
   
 
 ### /comments:
   - POST
-    - description: add a comment to comments table
+    - description: Creates a comment record to comments table
     - status code:(200)
     - JSON input:
       - header:{string}
       - content:{string}
-      - poster:{string}  
-
-  <!-- - method: DELETE
-    - status code:(204)
-    - description: delete data from database
-    - no JSON input -->
+      - poster:{string}
+    - Example output
+       ```JSON 
+       {
+        "id": 1,
+        "header":"fizz",
+        "content":"buzz",
+        "poster":"Holly Doe",
+        }
 
 ### /comments/id:
   - PUT
@@ -96,7 +116,16 @@
     - JSON input:
       - header:{string}
       - content:{string}
-      - poster:{string}  
+      - poster:{string} 
+    - Example output
+       ```JSON
+       {
+        "id": 1,
+        "header":"fizz",
+        "content":"buzz",
+        "poster":"Holly Doe",
+       }
+
   - GET
     - description: return a comment from comments table on an given id
     - status code:(200)
