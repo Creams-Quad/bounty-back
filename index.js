@@ -1,15 +1,11 @@
-'use strict';
+'use strict'
 
-require('dotenv').config();
+require('dotenv').config()
 
-const server = require('./src/server.js');
+const { start } = require('./src/server.js')
+const { db } = require('./src/models/index.js')
+const PORT = process.env.PORT || 3000
 
-const data = require('./src/models/index.js');
-
-const PORT = process.env.PORT || 3000;
-
-// we need the sync step to create those tables that don't exist for sequelize and SQL
-// this can run a promise
-data.dataBase.sync().then(() => {
-  server.start(PORT);
-});
+db.sync().then(() => {
+  start(PORT)
+})

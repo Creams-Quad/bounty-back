@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest --verbose --watch",
-    "lint": "eslint --init"
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
