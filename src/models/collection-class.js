@@ -40,9 +40,6 @@ class Collection {
   }
 
   createAssociation (type, model, options) {
-    // type == (hasMany) || (belongsToMany)
-    // model ==  some sequelize model
-    // options {foreignKey, sourceKey}
     try {
       this.model[type](model, options)
     } catch (e) {
