@@ -10,7 +10,7 @@ app.use('/*', (req, res) => {
 
 module.exports = {
   app: app,
-  start: function (PORT) {
-    app.listen(PORT, console.log(`Alert, Awake, Alive ${PORT}`))
+  start: (PORT) => {
+    app.listen(PORT, () => console.log(`Alert, Awake, Alive ${PORT}`))
   }
 }

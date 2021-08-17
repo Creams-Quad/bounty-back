@@ -4,6 +4,7 @@
   "description": "# Team Cream Squad - Cullen Sharp - Sunny Lee - Louis Lassegue - Tek Jones",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest --verbose --watch",
     "lint": "eslint --init"
   },
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/Creams-Quad/bounty-back#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.0.6",
     "sequelize": "^6.6.5",

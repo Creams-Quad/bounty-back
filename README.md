@@ -33,11 +33,20 @@
       - header:{string}
       - content:{string}
       - karma:{integer}
+    - Example output
+       ```JSON
+      {
+      "id":1,
+      "header":"foo",
+      "content":"bar",
+      "poster":"John Doe",
+      "karma":100,
+      }
   - GET
     - description: Return a list of all bounties
     - status code:(200)
     - no JSON Input
-    - - Example output
+    - Example output
        ```JSON
       {
       "id":1,
@@ -111,7 +120,7 @@
 
 ### /comments/id:
   - PUT
-    - description: update a comment from comments table on an given id
+    - description: Update a comment from comments table on an given id
     - status code:(200)
     - JSON input:
       - header:{string}
@@ -127,9 +136,8 @@
        }
 
   - GET
-    - description: return a comment from comments table on an given id
+    - description: Return a comment from comments table on an given id
     - status code:(200)
-    - description: return data from database
     - no JSON input
     - Example output
        ```JSON
@@ -142,7 +150,7 @@
         "karma":100
       }
   - DELETE
-    - description: delete a comment from comments table on an given id
+    - description: Delete a comment from comments table on an given id
     - status code:(204)
     - no JSON input
 
@@ -153,9 +161,7 @@
 ![Technologies Used](assets/tech-02.png)
 
 - [NodeJS](https://nodejs.org/en/docs/): 
-- [Base64]()
-- [JSON Web Token (JWT)]()
-- [Express]()
+- [Express](https://expressjs.com/en/starter/installing.html): web application framework that provides a robust set of features for web and mobile applications.
 - [Express router]()
 - [Cors]()
 - [Sequelize]()
