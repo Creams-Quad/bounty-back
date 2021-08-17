@@ -21,15 +21,7 @@ afterAll(async () => {
 })
 
 describe('🧪 Testing collection operations 🧪', () => {
-  test('creates a record', async () => {
-    const expected = {
-      id: 1,
-      header: 'fizz',
-      content: 'buzz',
-      poster: 'John Doe',
-      karma: 100
-    }
-
+  test('Creates a record', () => {
     const comment = {
       bountyId: 1,
       header: 'foo',
@@ -44,93 +36,69 @@ describe('🧪 Testing collection operations 🧪', () => {
       karma: 100
     }
 
-    const newBounty = await bountiesCollection.create(bounty)
-    const newComment = await commentsCollection.create(comment)
+    const newBounty = bountiesCollection.create(bounty)
+    const newComment = commentsCollection.create(comment)
 
-    expect(newBounty).toEqual(expected)
-    expect(newComment).toEqual({
-      id: 1,
-      bountyId: 1,
-      header: 'foo',
-      content: 'bar',
-      poster: 'Holly Doe'
-    })
+    expect(newBounty).toBeDefined()
+    expect(newComment).toBeDefined()
   })
 
-  test('read returns all records', async () => {
-    const bountiesList = await bountiesCollection.read()
-    console.log(bountiesList)
-    const expected = [
-      {
-        id: 1,
-        header: 'fizz',
-        content: 'buzz',
-        poster: 'John Doe',
-        karma: 100
-      }
-    ]
-
-    expect(bountiesList).toEqual(expected)
-  })
-
-  test('reads joined data', async () => {
-    const expected = {
-      id: 1,
-      header: 'fizz',
-      content: 'buzz',
+  test('Updates a record', async () => {
+    const bounty = {
+      header: 'tizz',
+      content: 'biz',
       poster: 'John Doe',
-      karma: 100,
-      comments: []
+      karma: 101
     }
 
-    const options = {
-      where: {
-        id: 1
-      },
-      include: 'Comments'
+    const updatedBounty = await bountiesCollection.update(1, bounty)
+    expect(updatedBounty.dataValues.header).not.toEqual('foo')
+  })
+
+  test('Read returns all records', async () => {
+    const bounty = {
+      header: 'pho',
+      content: 'phiz',
+      poster: 'Patty Sue',
+      karma: 100
     }
 
-    const bounty = await bountiesCollection.read(options)
+    await bountiesCollection.create(bounty)
+    const bountiesList = await bountiesCollection.read()
 
-    expect(bounty).toEqual(expected)
+    expect(bountiesList[0]).toBeDefined()
   })
 
   test('Creates association', async () => {
-    const expected = {
-      id: 1,
-      header: 'fizz',
-      content: 'buzz',
-      poster: 'John Doe',
-      karma: 100,
-      comments: []
-    }
-
-    await bountiesCollection.createAssociation('hasMany', commentsCollection.model, {
+    bountiesCollection.createAssociation('hasMany', commentsCollection.model, {
       foreignKey: 'bountyId',
       sourceKey: 'id'
     })
 
-    await commentsCollection.createAssociation('belongsTo', bountiesCollection.model, {
+    commentsCollection.createAssociation('belongsTo', bountiesCollection.model, {
       foreignKey: 'bountyId',
       targetKey: 'id'
     })
 
-    const bounty = await bountiesCollection.read({
-      where: {
-        id: 1
-      },
-      include: 'Comments'
+    const bounty = await bountiesCollection.read(1, {
+      include: commentsCollection.model
     })
 
-    expect(bounty).toEqual(expected)
+    expect(bounty.dataValues.Comments).toBeDefined()
+  })
+
+  test('Reads joined data', async () => {
+    const options = {
+      include: commentsCollection.model
+    }
+
+    const bounty = await bountiesCollection.read(1, options)
+
+    expect(bounty.dataValues.Comments).toBeDefined()
   })
 
   test('Deletes a record', async () => {
-    const options = {
-      where: { id: 1 }
-    }
-
-    await commentsCollection.delete(options)
+    await commentsCollection.delete(1)
     const comments = await commentsCollection.read()
 
     expect(comments).toEqual([])
