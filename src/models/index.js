@@ -30,11 +30,11 @@ const commentsCollection = new Collection('comments', comments)
 const usersCollection = new Collection('users', users)
 
 bountiesCollection.createAssociation('hasMany', commentsCollection.model, {
-  foreignKey: 'bountiesId',
+  foreignKey: 'bountyId',
   sourceKey: 'id'
 })
 commentsCollection.createAssociation('belongsTo', bountiesCollection.model, {
-  foreignKey: 'bountiesId',
+  foreignKey: 'bountyId',
   targetKey: 'id'
 })
 
