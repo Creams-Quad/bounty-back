@@ -120,6 +120,7 @@
 ```JSON
 {
   "id": 1,
+  "bountyId": 1,
   "header": "fizz",
   "content": "buzz",
   "poster": "Holly Doe",
