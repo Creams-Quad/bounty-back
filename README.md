@@ -1,4 +1,7 @@
-# bounty-back
+# Bounty Back
+
+![Dependencies](https://david-dm.org/Creams-Quad/bounty-back.svg)
+![Last commit](https://img.shields.io/github/last-commit/Creams-Quad/bounty-back)
 
 ## 🚀 Getting Started
 
@@ -32,7 +35,7 @@
   - description: creates and returns user credentials from a JWT token
   - status code: (200)
   - no json input
-  - authentication:
+  - auth:
     - Auth0 JWT token
 
 ### api/v1/bounties
