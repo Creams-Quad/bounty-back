@@ -1,7 +1,10 @@
 const express = require('express')
+
 const router = express.Router()
 
 const dataModules = require('../models')
+
+const { verifyToken } = require('../middleware/auth.js')
 
 router.param('model', (req, res, next) => {
   const modelName = req.params.model
@@ -18,6 +21,7 @@ router.get('/:model/:id', readOne)
 router.post('/:model', createOne)
 router.put('/:model/:id', updateOne)
 router.delete('/:model/:id', deleteOne)
+router.get('/login', getOneUser)
 
 async function readAll (req, res) {
   const records = await req.collection.read()
@@ -61,6 +65,21 @@ function deleteOne (req, res) {
   req.collection.delete(id)
 
   res.status(204).send()
+}
+
+function getOneUser (req, res) {
+  const token = req.headers.authorization.split(' ')[1]
+  verifyToken(token, getUser)
+
+  async function getUser (user) {
+    const model = dataModules.users.model
+    let userRecord = await model.find({ where: { email: dataModules.users.email } })
+    if (userRecord) {
+      res.status(200).json(userRecord)
+    }
+    userRecord = await model.create(user)
+    res.status(200).json(userRecord)
+  }
 }
 
 module.exports = router
