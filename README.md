@@ -175,18 +175,19 @@
 ![Technologies Used](assets/tech.png)
 ![Technologies Used](assets/tech-02.png)
 
-
-<!-- - [NodeJS](https://nodejs.org/en/docs/): -->
-<!-- - [Express]()
-- [Cors]()
-- [Sequelize]()
-- [Sequelize cli]()
-- [Sqlite3]()
-- [Jest]()
-- [Eslint]()
+- [NodeJS](https://nodejs.org/en/docs/): a JavaScript runtime built on Chrome's V8 JavaScript engine.
+- [Express](https://expressjs.com/): is a back end web application framework for Node.js. It is designed for building web applications and APIs.
+- [jwks-rsa](https://www.npmjs.com/package/jwks-rsa): a library to retrieve signing keys from a JWKS (JSON Web Key Set) endpoint.
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+- [Cors](https://www.npmjs.com/package/cors): is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- [Sequelize](https://sequelize.org/master/): is a promise-based Node.js Object–relational mapping for Postgres or other SQL databases.
+- [Sequelize-cli](https://www.npmjs.com/package/sequelize-cli): Sequelize Command Line Interface
+- [Sqlite3](https://www.npmjs.com/package/sqlite3): is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
+- [Jest](https://jestjs.io/docs/getting-started): is a JavaScript testing framework.
+- [Eslint](https://eslint.org/docs/user-guide/getting-started): is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code
 - [Postgres]()
 - [Heroku]()
-- [Notion]() -->
+- [Notion]() 
 
 ## Links
 
