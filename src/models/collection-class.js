@@ -6,10 +6,10 @@ class Collection {
     this.model = model
   }
 
-  read (id, options = {}) {
+  read (email, options = {}) {
     const modelParams = { ...options }
-    if (id) {
-      modelParams.where = { id: id }
+    if (email) {
+      modelParams.where = { email: email }
       return this.model.findOne(modelParams)
     } else {
       return this.model.findAll(modelParams)
