@@ -13,7 +13,7 @@ function getKey(headers, callback) {
   })
 }
 
-module.exports = function verifyToken(token, callback) {
+module.exports = function verifyToken (token, callback) {
   jwt.verify(token, getKey, {}, (err, user) => {
     if (err) {
       console.error('Something Went Wrong')

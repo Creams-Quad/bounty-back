@@ -1,7 +1,10 @@
 'use strict'
+const jwt = require('jsonwebtoken')
+
+const SECRET = process.env.SECRET || 'secretstring'
 
 const usersModel = (sequelize, DataTypes) => {
-  return sequelize.define('Users', {
+  const model = sequelize.define('Users', {
     role: { type: DataTypes.ENUM('explorer', 'poster', 'hunter', 'guild master'), required: true, defaultValue: 'explorer' },
     email: {
       type: DataTypes.STRING,
@@ -25,6 +28,18 @@ const usersModel = (sequelize, DataTypes) => {
       }
     }
   })
+  model.authenticateToken = async function (token) {
+    try {
+      const parsedToken = jwt.verify(token, SECRET)
+      //==== change findOne to findOrCreate ======//
+      const user = this.findOrCreate({ where: { email: parsedToken.email } })
+      if (user) { return user }
+      throw new Error('User Not Found')
+    } catch (e) {
+      throw new Error(e.message)
+    }
+  }
+  return model
 }
 
 module.exports = usersModel
