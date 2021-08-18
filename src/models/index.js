@@ -1,4 +1,5 @@
 'use strict'
+// const {Client} = require('pg')
 
 require('dotenv').config()
 
@@ -19,6 +20,9 @@ const sequelize = new Sequelize(DATABASE_URL, {
     }
   }
 })
+
+// const client = new Client(sequelize)
+// client.on('connect', () => console.log('connected to db'))
 
 const bounties = bountiesModel(sequelize, DataTypes)
 const comments = commentsModel(sequelize, DataTypes)
