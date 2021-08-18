@@ -22,4 +22,4 @@ const bountiesModel = (sequelize, DataTypes) => {
   })
 }
 
-module.exports = bountiesModel;
+module.exports = bountiesModel

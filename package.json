@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --verbose --watch",
-    "lint": "eslint --init"
+    "test": "jest --verbose",
+    "lint": "eslint ./src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,13 @@
   },
   "homepage": "https://github.com/Creams-Quad/bounty-back#readme",
   "dependencies": {
+    "auth0": "^2.36.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.12.3",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.2",
