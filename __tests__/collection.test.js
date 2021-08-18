@@ -8,8 +8,8 @@ const {
 
 const {
   db,
-  commentsCollection,
-  bountiesCollection
+  comments: commentsCollection,
+  bounties: bountiesCollection
 } = require('../src/models/index')
 
 beforeAll(async () => {

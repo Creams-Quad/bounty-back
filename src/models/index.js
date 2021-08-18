@@ -40,7 +40,7 @@ commentsCollection.createAssociation('belongsTo', bountiesCollection.model, {
 
 module.exports = {
   db: sequelize,
-  bountiesCollection,
-  commentsCollection,
-  usersCollection
+  bounties: bountiesCollection,
+  comments: commentsCollection,
+  users: usersCollection
 }
