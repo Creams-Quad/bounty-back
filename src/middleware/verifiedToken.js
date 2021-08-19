@@ -5,7 +5,7 @@ const client = jwksClient({
   jwksUri: 'https://dev-b086be-1.us.auth0.com/.well-known/jwks.json'
 })
 
-function getKey(headers, callback) {
+function getKey (headers, callback) {
   client.getSigningKey(headers.kid, function (err, key) {
     const signingKey = key.publicKey || key.rsaPublicKey
     callback(null, signingKey)

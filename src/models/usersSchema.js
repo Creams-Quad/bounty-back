@@ -2,7 +2,11 @@
 
 const usersModel = (sequelize, DataTypes) => {
   return sequelize.define('Users', {
-    role: { type: DataTypes.ENUM('explorer', 'poster', 'hunter', 'guild master'), required: true, defaultValue: 'explorer' },
+    role: {
+      type: DataTypes.ENUM('explorer', 'poster', 'hunter', 'guildMaster'),
+      allowNull: false,
+      defaultValue: 'explorer'
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false
