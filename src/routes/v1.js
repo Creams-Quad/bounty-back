@@ -22,7 +22,7 @@ router.param('model', (req, res, next) => {
 
 router.get('/:model', attachUser, permissions('read'), readAll)
 router.get('/:model/:id', attachUser, permissions('read'), readOne)
-router.post('/:model', permissions('create'), createOne)
+router.post('/:model', createOne)
 router.put('/:model/:id', attachUser, permissions('update'), updateOne)
 router.delete('/:model/:id', attachUser, permissions('delete'), deleteOne)
 router.post('/login', getOneUser)
