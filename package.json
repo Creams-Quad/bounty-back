@@ -1,12 +1,12 @@
 {
   "name": "bounty-back",
   "version": "1.0.0",
-  "description": "# Team Cream Squad - Cullen Sharp - Sunny Lee - Louis Lassegue - Tek Jones",
+  "description": "Bounty is a social network built around sharing recipes; more specifically, sharing and creating recipes for cold treats.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "jest --verbose",
-    "lint": "eslint ./src/**/*.js"
+    "lint": "eslint **/*.js"
   },
   "repository": {
     "type": "git",
@@ -24,20 +24,20 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "jest": "^27.0.6",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.12.3",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
-    "sqlite3": "^5.0.2",
-    "supertest": "^6.1.5"
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0"
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^27.0.6",
+    "supertest": "^6.1.5"
   }
 }

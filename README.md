@@ -3,6 +3,8 @@
 ![Dependencies](https://david-dm.org/Creams-Quad/bounty-back.svg)
 ![Last commit](https://img.shields.io/github/last-commit/Creams-Quad/bounty-back)
 
+**Bounty** is a social network built around sharing recipes; more specifically, sharing and creating recipes for cold treats. **Bounty's** purpose is to crowd-source hard to find or non-existent recipes. Fulfill your cream-based cravings, and maybe make some friends on the way.
+
 ## 🚀 Getting Started
 
 1. Fork our repo [GitHub](https://github.com/Creams-Quad/bounty-back)
@@ -18,6 +20,8 @@
 ### [Entity Relationship Diagram](#-Entity-Relationship-Diagram)
 
 ### [Our Repos](#-Our-Repos)
+
+### [Dependencies](#-Dependencies)
 
 ### [Team](#-Team)
 
@@ -232,12 +236,28 @@
 
 - [Bounty frontend](https://github.com/Creams-Quad/bounty-front)
 
+## 📦 Dependencies
+
+- [Auth0](https://www.npmjs.com/package/auth0)
+- [CORS](https://www.npmjs.com/package/cors)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Express](https://www.npmjs.com/package/express)
+- [Eslint](https://www.npmjs.com/package/eslint)
+- [Jest](https://www.npmjs.com/package/jest)
+- [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
+- [JWKS-RSA](https://www.npmjs.com/package/jwks-rsa)
+- [Pg](https://www.npmjs.com/package/pg)
+- [Sequelize](https://www.npmjs.com/package/sequelize)
+- [Sequelize-cli](https://www.npmjs.com/package/sequelize-cli)
+- [SuperTest](https://www.npmjs.com/package/supertest)
+- [Sqlite3](https://www.npmjs.com/package/sqlite3)
+
 ## 🏡 Team
 
-- Cullen Sharp
-- Sunny Lee
-- Louis Lassegue
-- Tek Jones
+- [Cullen Sharp](https://github.com/CullenSharp)
+- [Sunny Lee](https://github.com/sunny-lee3)
+- [Louis Lassegue](https://github.com/mrloulass)
+- [Tek Jones](https://github.com/Tekthree)
 
 ## 🔍 More Resources
 
