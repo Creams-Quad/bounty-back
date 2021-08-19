@@ -4,8 +4,6 @@ const router = express.Router()
 
 const dataModules = require('../models')
 
-const { verifyToken } = require('../middleware/verifiedToken.js')
-
 const permissions = require('../middleware/permissions.js')
 
 const attachUser = require('../middleware/attachUser.js')
@@ -25,7 +23,6 @@ router.get('/:model/:id', attachUser, permissions('read'), readOne)
 router.post('/:model', attachUser, permissions('read'), createOne)
 router.put('/:model/:id', attachUser, permissions('update'), updateOne)
 router.delete('/:model/:id', attachUser, permissions('delete'), deleteOne)
-router.post('/login', getOneUser)
 
 async function readAll (req, res) {
   try {
@@ -82,25 +79,6 @@ function deleteOne (req, res) {
     req.collection.delete(id)
 
     res.status(204).send()
-  } catch (e) {
-    res.status(500).send(e)
-  }
-}
-
-function getOneUser (req, res) {
-  try {
-    const token = req.headers.authorization.split(' ')[1]
-    verifyToken(token, getUser)
-
-    async function getUser (user) {
-      const { model } = dataModules.users
-      let userRecord = await model.find({ where: { email: user.email } })
-      if (userRecord) {
-        res.status(200).json(userRecord)
-      }
-      userRecord = await model.create(user)
-      res.status(200).json(userRecord)
-    }
   } catch (e) {
     res.status(500).send(e)
   }
