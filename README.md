@@ -11,21 +11,19 @@
 1. Run tests `npm test`
 1. Start a development server `npm start`
 
----
-
 ## 📖 Table of Contents
 
-### [API Reference](#🛠-API-Reference)
+### [API Reference](#-API-Reference)
 
-### [Entity Relationship Diagram](#🏢-Entity-Relationship-Diagram)
+### [Entity Relationship Diagram](#-Entity-Relationship-Diagram)
 
-### [Our Repos](#🚧-Our-Repos)
+### [Our Repos](#-Our-Repos)
 
-### [Team](#🏡-Team)
+### [Team](#-Team)
 
-### [More Resources](#🔍-More-Resources)
+### [More Resources](#-More-Resources)
 
----
+### [Team Agreement](./TeamAgreement.md)
 
 ## 🛠 API Reference
 
@@ -225,8 +223,6 @@
     - Auth0 JWT
     - 'delete' permissions
   - No JSON input
-
----
 
 ## 🏢 Entity Relationship Diagram
 
