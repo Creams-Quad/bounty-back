@@ -5,7 +5,7 @@
 
 ## 🚀 Getting Started
 
-1. fork our repo [GitHub](https://github.com/Creams-Quad/bounty-back)
+1. Fork our repo [GitHub](https://github.com/Creams-Quad/bounty-back)
 1. Clone the repo `git clone`
 1. Install dependencies `npm i`
 1. Run tests `npm test`
@@ -16,6 +16,8 @@
 ## 📖 Table of Contents
 
 ### [API Reference](#🛠-API-Reference)
+
+### [Entity Relationship Diagram](#🏢-Entity-Relationship-Diagram)
 
 ### [Our Repos](#🚧-Our-Repos)
 
@@ -29,28 +31,53 @@
 
 ### /login
 
-> 🚧 in development
-
 - `POST`
-  - description: creates and returns user credentials from a JWT token
-  - status code: (200)
-  - no json input
-  - auth:
-    - Auth0 JWT token
+  - Description: creates and returns user credentials from a JWT token
+  - Status code: (200)
+  - No json input
+  - Auth:
+    - Auth0 JWT
+  - Example output
+
+```JSON
+{
+  "id": 1,
+  "email": "John@doe.mail",
+  "role": "guildMaster",
+  "permissions: ["read", "update", "create", "delete"]
+}
+```
 
 ### api/v1/bounties
 
 - `POST`
-  - description: Creates a new bounty with an id and add it to the bounties table
-  - status code: (200)
+  - Description: Creates a new bounty with an id and add it to the bounties table
+  - Status code: (200)
+  - Auth:
+    - Auth0 JWT
+    - 'create' permission
   - JSON input:
     - header: {string}
     - content: {string}
     - karma: {integer}
+
+```JSON
+{
+  "id": 1,
+  "header": "foo",
+  "content": "bar",
+  "poster": "John Doe",
+  "karma": 100,
+}
+```
+
 - `GET`
-  - description: Return a list of all bounties
-  - status code:(200)
-  - no JSON Input
+  - Description: Return a list of all bounties
+  - Status code:(200)
+  - Auth:
+    - Auth0 JWT
+    - 'read' permission
+  - No JSON Input
   - Example output
 
 ```JSON
@@ -66,8 +93,11 @@
 ### api/v1/bounties/:id
 
 - `PUT`
-  - description: Updates a bounty within the bounties table on a given id
-  - status code:(200)
+  - Description: Updates a bounty within the bounties table on a given id
+  - Status code:(200)
+  - Auth:
+    - Auth0 JWT
+    - 'update' permissions
   - JSON input:
     - header: {string}
     - content: {string}
@@ -84,9 +114,12 @@
 ```
 
 - `GET`
-  - description: Return a bounty with related comments
-  - status code:(200)
-  - no JSON input
+  - Description: Return a bounty with related comments
+  - Status code:(200)
+  - Auth:
+    - Auth0 JWT
+    - 'read' permissions
+  - No JSON input
   - Example output
 
 ```JSON
@@ -111,15 +144,21 @@
 ```
 
 - `DELETE`
-  - description: Delete bounty from table
-  - status code:(204)
-  - no JSON input
+  - Description: Delete bounty from table
+  - Status code:(204)
+  - Auth:
+    - Auth0 JWT
+    - 'delete' permissions
+  - No JSON input
   
 ### api/v1/comments
 
 - `POST`
-  - description: Creates a comment record to comments table
-  - status code:(200)
+  - Description: Creates a comment record to comments table
+  - Status code:(200)
+  - Auth:
+    - Auth0 JWT
+    - 'create' permissions
   - JSON input:
     - header:{string}
     - content:{string}
@@ -139,8 +178,11 @@
 ### api/v1/comments/:id
 
 - `PUT`
-  - description: update a comment from comments table on an given id
-  - status code:(200)
+  - Description: update a comment from comments table on an given id
+  - Status code:(200)
+  - Auth:
+    - Auth0 JWT
+    - 'update' permissions
   - JSON input:
     - header:{string}
     - content:{string}
@@ -157,10 +199,12 @@
 ```
 
 - `GET`
-  - description: return a comment from comments table on an given id
-  - status code:(200)
-  - description: return data from database
-  - no JSON input
+  - Description: return a comment from comments table on an given id
+  - Status code:(200)
+  - Auth:
+    - Auth0 JWT
+    - 'read' permissions
+  - No JSON input
   - Example output
 
 ```JSON
@@ -175,15 +219,22 @@
 ```
 
 - `DELETE`
-  - description: delete a comment from comments table on an given id
-  - status code:(204)
-  - no JSON input
+  - Description: delete a comment from comments table on an given id
+  - Status code:(204)
+  - Auth:
+    - Auth0 JWT
+    - 'delete' permissions
+  - No JSON input
 
 ---
 
+## 🏢 Entity Relationship Diagram
+
+![ERD](./assets/ERD.png)
+
 ## 🚧 Our Repos
 
-- [Bounty frontend code](https://github.com/Creams-Quad/bounty-front)
+- [Bounty frontend](https://github.com/Creams-Quad/bounty-front)
 
 ## 🏡 Team
 
