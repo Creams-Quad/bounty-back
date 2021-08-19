@@ -11,7 +11,7 @@ const bountiesModel = (sequelize, DataTypes) => {
       require: true
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       require: true
     },
     karma: {
