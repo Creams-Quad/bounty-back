@@ -28,28 +28,40 @@ router.delete('/:model/:id', attachUser, permissions('delete'), deleteOne)
 router.post('/login', getOneUser)
 
 async function readAll (req, res) {
-  const records = await req.collection.read()
-  res.status(200).json(records)
+  try {
+    const records = await req.collection.read()
+    res.status(200).json(records)
+  } catch (e) {
+    res.status(500).send(e)
+  }
 }
 
 async function readOne (req, res) {
-  const id = req.params.id
-  let modelParams = {}
-  if (req.collection.name === 'bounties') {
-    modelParams = {
-      include: dataModules.comments.model
+  try {
+    const id = req.params.id
+    let modelParams = {}
+    if (req.collection.name === 'bounties') {
+      modelParams = {
+        include: dataModules.comments.model
+      }
     }
-  }
-  const record = await req.collection.read(id, modelParams)
+    const record = await req.collection.read(id, modelParams)
 
-  res.status(200).json(record)
+    res.status(200).json(record)
+  } catch (e) {
+    res.status(500).send(e)
+  }
 }
 
 async function createOne (req, res) {
-  const json = req.body
-  const record = await req.collection.create(json)
+  try {
+    const json = req.body
+    const record = await req.collection.create(json)
 
-  res.status(201).json(record)
+    res.status(201).json(record)
+  } catch (e) {
+    res.status(500).send(e)
+  }
 }
 
 async function updateOne (req, res) {
@@ -59,30 +71,38 @@ async function updateOne (req, res) {
     const updatedRecord = await req.collection.update(id, json)
 
     res.status(200).json(updatedRecord)
-  } catch (error) {
-    res.status(500).send(error)
+  } catch (e) {
+    res.status(500).send(e)
   }
 }
 
 function deleteOne (req, res) {
-  const id = req.params.id
-  req.collection.delete(id)
+  try {
+    const id = req.params.id
+    req.collection.delete(id)
 
-  res.status(204).send()
+    res.status(204).send()
+  } catch (e) {
+    res.status(500).send(e)
+  }
 }
 
 function getOneUser (req, res) {
-  const token = req.headers.authorization.split(' ')[1]
-  verifyToken(token, getUser)
+  try {
+    const token = req.headers.authorization.split(' ')[1]
+    verifyToken(token, getUser)
 
-  async function getUser (user) {
-    const { model } = dataModules.users
-    let userRecord = await model.find({ where: { email: user.email } })
-    if (userRecord) {
+    async function getUser (user) {
+      const { model } = dataModules.users
+      let userRecord = await model.find({ where: { email: user.email } })
+      if (userRecord) {
+        res.status(200).json(userRecord)
+      }
+      userRecord = await model.create(user)
       res.status(200).json(userRecord)
     }
-    userRecord = await model.create(user)
-    res.status(200).json(userRecord)
+  } catch (e) {
+    res.status(500).send(e)
   }
 }
 
