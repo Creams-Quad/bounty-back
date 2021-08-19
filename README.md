@@ -23,6 +23,8 @@
 
 ### [More Resources](#-More-Resources)
 
+### [Team Agreement](./TeamAgreement.md)
+
 ## 🛠 API Reference
 
 ### /login
