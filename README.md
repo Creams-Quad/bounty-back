@@ -262,3 +262,5 @@
 ## 🔍 More Resources
 
 - [Project Management Board](https://www.notion.so/Cream-Squad-2eecc388ea1a4a70b6992435f3e885a8)
+
+- [Bounty website](https://bounty-ice-cream.netlify.app/)
