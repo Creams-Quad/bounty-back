@@ -26,7 +26,14 @@ router.delete('/:model/:id', attachUser, permissions('delete'), deleteOne)
 
 async function readAll (req, res) {
   try {
-    const records = await req.collection.read()
+    let records
+    if (req.collection.name === 'bounties') {
+      records = await req.collection.read(null, {
+        include: dataModules.comments.model
+      })
+    } else {
+      records = await req.collection.read()
+    }
     res.status(200).json(records)
   } catch (e) {
     res.status(500).send(e)
