@@ -1,12 +1,9 @@
 const express = require('express')
-
 const router = express.Router()
 
 const dataModules = require('../models')
-
-const permissions = require('../middleware/permissions.js')
-
-const attachUser = require('../middleware/attachUser.js')
+// const permissions = require('../middleware/permissions.js')
+// const attachUser = require('../middleware/attachUser.js')
 
 router.param('model', (req, res, next) => {
   const modelName = req.params.model
@@ -18,11 +15,11 @@ router.param('model', (req, res, next) => {
   }
 })
 
-router.get('/:model', attachUser, permissions('read'), readAll)
-router.get('/:model/:id', attachUser, permissions('read'), readOne)
-router.post('/:model', attachUser, permissions('read'), createOne)
-router.put('/:model/:id', attachUser, permissions('update'), updateOne)
-router.delete('/:model/:id', attachUser, permissions('delete'), deleteOne)
+router.get('/:model', readAll)
+router.get('/:model/:id', readOne)
+router.post('/:model', createOne)
+router.put('/:model/:id', updateOne)
+router.delete('/:model/:id', deleteOne)
 
 async function readAll (req, res) {
   try {
