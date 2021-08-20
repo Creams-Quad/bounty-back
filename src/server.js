@@ -17,7 +17,7 @@ app.use('/api/v2', v2Routes)
 
 app.post('/login', getOneUser)
 
-function getOneUser (req, res) {
+async function getOneUser (req, res) {
   try {
     const token = req.headers.authorization.split(' ')[1]
     verifyToken(token, getUser)
